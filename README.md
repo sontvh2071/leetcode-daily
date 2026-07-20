@@ -42,7 +42,7 @@ day_xxx/
 
 | Day | Solution | Status |
 |---:|---|:---:|
-| 001 | [View solution](./day_001) |  |
+| 001 | [View solution](./day_001) | ✅ |
 
 > The table will be updated as new daily solutions are added.
 
