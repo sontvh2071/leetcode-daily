@@ -47,3 +47,11 @@ class Solution:
                 result[i] = True
 
         return result
+    
+    # 1672. richest customer wealth
+    def maximumWealth(self, accounts: List[List[int]]) -> int:
+        maxWealth = sum(accounts[0])
+        for customer in accounts:
+            if sum(customer) > maxWealth:
+                maxWealth = sum(customer)
+        return maxWealth
