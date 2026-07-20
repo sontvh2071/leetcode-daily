@@ -55,3 +55,16 @@ class Solution:
             if sum(customer) > maxWealth:
                 maxWealth = sum(customer)
         return maxWealth
+    
+    # 485 max consecutive ones
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        maxCon = 0
+        currentCon = 0
+        for i in range(len(nums)):
+            if nums[i] == 1:
+                currentCon += 1
+                maxCon = max(currentCon, maxCon)
+            else:
+                currentCon = 0
+        
+        return maxCon
