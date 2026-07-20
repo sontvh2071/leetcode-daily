@@ -68,3 +68,26 @@ class Solution:
                 currentCon = 0
         
         return maxCon
+    
+    # 414 third maximum number
+    def thirdMax(self, nums: List[int]) -> int:
+        nums = list(set(nums))
+        if len(nums) < 3:
+            return max(nums)
+        
+        m = [float('-inf'), float('-inf'), float('-inf')]
+        for i in range(len(nums)):
+            if nums[i] > m[0]:
+                m[2] = m[1]
+                m[1] = m[0]
+                m[0] = nums[i]
+            elif nums[i] > m[1]:
+                m[2] = m[1]
+                m[1] = nums[i]
+            elif nums[i] > m[2]:
+                m[2] = nums[i]
+        
+        return m[2]
+            
+            
+        
