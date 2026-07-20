@@ -36,3 +36,14 @@ class Solution:
             
         
         return runningSum
+    
+    # 1431 - kids with the greatest number of candies problem
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        greatest = max(candies)
+        result = [False] * len(candies)
+
+        for i in range(len(candies)):
+            if candies[i] + extraCandies >= greatest:
+                result[i] = True
+
+        return result
