@@ -25,3 +25,14 @@ class Solution:
             shuffled[i * 2 + 1] = nums[i + n]
             
         return shuffled
+    
+    # 1480 - running sum of 1d array problem
+    def runningSum(self, nums: List[int]) -> List[int]:
+        runningSum = []
+        runningSum.append(nums[0])
+        
+        for i in range(1, len(nums)):
+            runningSum.append(runningSum[i -1] + nums[i])
+            
+        
+        return runningSum
