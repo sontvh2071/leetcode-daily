@@ -50,6 +50,25 @@ class Solution:
         for num in arr:
             f[num] = f.get(num, 0) + 1
         return len(f.values()) == len(set(f.values()))
+    
+    # 128
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if len(nums) == 0:
+            return 0
+        if len(nums) == 1:
+            return 1
+
+        nums = sorted(set(nums))
+        maxCon = 1
+        currentCon = 1
+        for i in range(len(nums) - 1):
+            if nums[i + 1] - nums[i] == 1:
+                currentCon += 1
+                maxCon = max(maxCon, currentCon)
+            else:
+                currentCon = 1
+        
+        return maxCon
 
     
     
