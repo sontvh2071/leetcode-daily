@@ -44,6 +44,12 @@ class Solution:
             
         return True
     
+    # 1207
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        f = {}
+        for num in arr:
+            f[num] = f.get(num, 0) + 1
+        return len(f.values()) == len(set(f.values()))
 
     
     
