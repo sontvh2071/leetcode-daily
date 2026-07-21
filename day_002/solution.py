@@ -26,3 +26,24 @@ class Solution:
             if num in m:
                 s.add(num)
         return list(s)
+    
+    # 202
+    def isHappy(self, n: int) -> bool:
+        seen = set()
+        
+        while(n != 1):
+            if n in seen:
+                return False
+            
+            seen.add(n)
+            happy = 0
+            while(n > 0):
+                happy += (n % 10) ** 2
+                n //= 10
+            n = happy
+            
+        return True
+    
+
+    
+    
