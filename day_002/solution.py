@@ -15,3 +15,14 @@ class Solution:
                 max_profit = max(max_profit, price - min_price)
         
         return max_profit
+    
+    # 349
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        m = {}
+        s = set([])
+        for num in nums1:
+            m[num] = 1
+        for num in nums2:
+            if num in m:
+                s.add(num)
+        return list(s)
