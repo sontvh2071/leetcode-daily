@@ -58,3 +58,15 @@ class Solution:
                         return False
                     rows[i][num] = cols[j][num] = boxes[boxIndex][num] = True
         return True
+    
+    # 242 valid anagram
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        
+        m = {}
+        for i in range(len(s)):
+            m[s[i]] = m.get(s[i], 0) + 1
+            m[t[i]] = m.get(t[i], 0) - 1
+
+        return not any(v != 0 for v in m.values())
