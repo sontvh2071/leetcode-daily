@@ -1,3 +1,4 @@
+import heapq
 from typing import List, Tuple
 
 
@@ -87,3 +88,22 @@ class Solution:
                 f = True
         
         return l + 1 if f else l
+    
+    # 451 sort characters by frequency
+    def frequencySort(self, s: str) -> str:
+        f = {}
+        for char in s:
+            f[char] = f.get(char, 0) + 1
+        
+        pq = []
+        for k, v in f.items():
+            heapq.heappush(pq, (-v, k))
+            
+        f_str = ""
+        while pq:
+            count, char = heapq.heappop(pq)
+            while(count != 0):
+                f_str += char
+                count +=1
+        
+        return f_str
