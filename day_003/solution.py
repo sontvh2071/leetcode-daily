@@ -70,3 +70,20 @@ class Solution:
             m[t[i]] = m.get(t[i], 0) - 1
 
         return not any(v != 0 for v in m.values())
+    
+    # 409 longest palindrome
+    def longestPalindrome(self, s: str) -> int:
+        m = {}
+        for char in s:
+            m[char] = m.get(char, 0) + 1
+
+        l = 0
+        f = False
+        for count in m.values():
+            if count % 2 == 0:
+                l += count
+            else:
+                l += count - 1
+                f = True
+        
+        return l + 1 if f else l
