@@ -45,6 +45,7 @@ day_xxx/
 | 001 | [View solution](./day_001) | ✅ |
 | 002 | [View solution](./day_002) | ✅ |
 | 003 | [View solution](./day_003) | ✅ |
+| 004 | [View solution](./day_004) | ✅ |
 
 > The table will be updated as new daily solutions are added.
 
