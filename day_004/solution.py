@@ -23,6 +23,8 @@ class Solution:
             k -= 1
         
         return f
+
+    # 621
     def leastInterval(self, tasks: List[str], n: int) -> int:
         if n == 0:
             return len(tasks)
@@ -35,38 +37,46 @@ class Solution:
         for val, count in m.items():
             heapq.heappush(pq, (-count, (val, -n - 1)))
         
-        return self.solve(pq, 0, n)
+        return self.schedule(pq, -1, n) + 1
             
-    def solve(self, items: List[Tuple[int, Tuple[int, int]]], t: int, k: int) -> int:
+    def schedule(self, items: List[Tuple[int, Tuple[int, int]]], t: int, k: int) -> int:
         pq = []
-        while items:            
+        k_clone = k
+
+        heapq.heapify(items)
+
+        while items and k_clone >= 0:    
             item = heapq.heappop(items)
             count = item[0]
             val = item[1][0]
             quota = item[1][1]
             
+            t += 1
+            k_clone -= 1
             if t > item[1][1] + k:
                 count += 1
                 quota = t
             else:
                 heapq.heappush(pq, item)
+                k_clone += 1
+                t -= 1
                 continue
                 
             if count < 0:
-                heapq.heappush(pq, (count, (val, quota)))
-                
+                heapq.heappush(pq, (count, (val, quota))) 
 
-            t += 1
+        if len(items) == 0 and len(pq) > 0:
+            t += k_clone + 1
 
-            
+        pq = pq + items
         if len(pq) == 0:
             return t    
 
-        return self.solve(pq, t, k)
+        return self.schedule(pq, t, k)
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.leastInterval(["A","A","A","B","B","B"], 2))
+    print(s.leastInterval(["A","A","A","B","B","B", "C","C","C", "D", "D", "E"], 2))
 
             
             
