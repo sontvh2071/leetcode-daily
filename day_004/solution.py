@@ -3,6 +3,7 @@ from typing import List
 
 
 class Solution:
+    # 347 top K frequent elements
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         if k == 1 and len(nums) == 1:
             return nums
