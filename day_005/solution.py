@@ -34,4 +34,21 @@ class Solution:
                 return False
         
         return True
+    
+    # 594 longest harmonious subsequence
+    def findLHS(self, nums: List[int]) -> int:
+        m = {}
+        for n in nums:
+            m[n] = m.get(n, 0) + 1
+        
+        max_len = 0
+        for k in m.keys():
+            if (k+1) in m:
+                max_len = max(max_len, m[k] + m[k+1])
+        
+        return max_len
+
+if __name__ == "__main__":
+    solution = Solution()
+    print(solution.findLHS([1, 3, 2, 2, 5, 2, 3, 7]))
                 
